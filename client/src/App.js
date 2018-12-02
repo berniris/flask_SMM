@@ -80,7 +80,7 @@ class App extends Component {
     handleRegister(input) {
         AuthService.register(input)
         this.props.history.push('/');
-        // window.location.reload()
+        window.location.reload()
     }
 
     handleLogout() {
@@ -104,7 +104,7 @@ class App extends Component {
     }
 
     componentWillUnmount() {
-        clearInterval(this.intervalId)
+  
     }
 
 
