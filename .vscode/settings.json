@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "smmv/bin/python",
+    "python.linting.enabled": false
+}
