@@ -11,7 +11,7 @@ import Resources from './components/Resources';
 // import DateIdeas from './components/date_ideas/DateIdeas';
 // import BetterDoctor from './components/find_counselor/BetterDoctor';
 import AuthService from './services/AuthService';
-import DateService from './services/DateService';
+// import DateService from './services/DateService';
 
 
 class App extends Component {
@@ -23,7 +23,7 @@ class App extends Component {
             dateID: null,
             loggedInError: false
         }
-        this.createDateIdea = this.createDateIdea.bind(this);
+        // this.createDateIdea = this.createDateIdea.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
         this.handleRegister = this.handleRegister.bind(this);
@@ -31,46 +31,48 @@ class App extends Component {
     }
 
 
-    getDateIdeas() {
-        DateService.All()
-            .then(respBody =>
-                this.setState({
-                    dateideas: respBody
-                }))
-            .catch(err => err)
-            .then(console.log(this.state.dateideas))
-    }
+    // getDateIdeas() {
+    //     DateService.All()
+    //         .then(respBody =>
+    //             this.setState({
+    //                 dateideas: respBody
+    //             }))
+    //         .catch(err => err)
+    //         .then(console.log(this.state.dateideas))
+    // }
 
-    createDateIdea(dateidea) {
-        DateService.Create(dateidea)
-            .then(respBody => {
-                this.setState({
-                        dateID: respBody.id
-                    })
-                    // this.getUserDateIdea();
-                    // this.props.history.push('/dateideas');
-            })
+    // createDateIdea(dateidea) {
+    //     DateService.Create(dateidea)
+    //         .then(respBody => {
+    //             this.setState({
+    //                     dateID: respBody.id
+    //                 })
+    //                 // this.getUserDateIdea();
+    //                 // this.props.history.push('/dateideas');
+    //         })
 
-    }
+    // }
 
-    deleteDateIdea(id) {
-        DateService.Delete(id)
-    }
+    // deleteDateIdea(id) {
+    //     DateService.Delete(id)
+    // }
 
     getCalls() {
-        this.intervalId = setInterval(() => this.getDateIdeas(), 1000);
-        this.getDateIdeas();
+        // this.intervalId = setInterval(() => this.getDateIdeas(), 1000);
+        // this.getDateIdeas();
+
+       console.log('say cheese')
     }
 
     handleLogin(input) {
         AuthService.login(input)
         console.log(input)
-            .then(input => {
-                this.setState({
-                    input,
-                    loggedInError: false
-                })
-            })
+            // .then(input => {
+            //     this.setState({
+            //         input,
+            //         loggedInError: false
+            //     })
+            // })
         this.getCalls();
     }
 

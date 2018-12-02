@@ -1,97 +1,80 @@
-import React from 'react';
-import { withRouter } from 'react-router';
-// import './login.css';
+import React, { Component } from 'react';
 
-class Register extends React.Component {
-  state = {
-    username: '',
-    password: '',
-  }
+class register extends Component {
+  constructor(props) {
+    super(props);
 
-  onChange = event => {
-    this.setState({
-      [event.target.id]: event.target.value,
-    });
-  }
-
-  clearLogin = () => {
-    this.setState({
+    this.state = {
+      user: {
       username: '',
-      password: '',
-    });
+      password: ''
+    }
+  }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  sendLoginInformation = (username, password) => {
-    const { router } = this.props;
-    const API_HEADERS_AND_MODE = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      mode: 'cors',
-    };
-  
-    const API_SETTINGS = {
-      settings: {
-        method: 'POST',
-        body: JSON.stringify({
-          username: username,
-          password: password
-        })
+handleSubmit (e) {
+  e.preventDefault();
+  console.log(this.state.user)
+  this.props.handleRegister(this.state.user);
+}
+
+handleChange(e) {
+  const {name, value} = e.target;
+  this.setState((prevState) => {
+    return {
+      user: {
+        ...prevState.user,
+        [name]: value
       }
     }
+  })
+}
 
-    return fetch('http://localhost:5000/registration', {
-      ...API_HEADERS_AND_MODE,
-      ...API_SETTINGS.settings
-    }).then(res => {
-      if (res.status >= 400) {
-        return res.json().then(err => {
-          throw err;
-        });
-      }
-      console.log(res.json());
-    })
-  }
 
-  render() {
-    const { username, password } = this.state;
-    return (
-      <div className="auth-container">
-        <div className="logo">
-          <h3 className="demo">Demo Auth Site</h3>
-        </div>
-        <div className="auth-input-holder">
-        <div className="username-icon" />
-            <input
-              type="text"
-              id="username"
-              placeholder="Username"
-              className="username"
-              value={this.state.username}
-              onChange={this.onChange}
-            />
-          <div className="password-icon" />
+render() {
+  return (
+    <div className="container">
+    <div className="register">
+        <h1 className="header">
+          register
+        </h1>
+        <p>Need to create an account? Please click <a href="/register">here to register.</a></p>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="username">Username: </label>
+          <br />
           <input
-            type="text"
-            id="password"
-            placeholder="Password"
-            className="password"
-            value={this.state.password}
-            onChange={this.onChange}
+            value={this.state.user.username}
+            name="username"
+            type="username"
+            onChange={this.handleChange}
+            autoComplete="off"
           />
-        </div>
-        <div className="auth-button">
-            <button
-            className="auth-button-go"
-            onClick={() => this.sendLoginInformation(username, password)}
+          <br /><br />
+          <label htmlFor="password">Password:</label>
+          <br />
+          <input
+            value={this.state.user.password}
+            name="password"
+            type="password"
+            onChange={this.handleChange}
+          />
+          <br/>
+          <br/>
+          <button
+            type="submit"
+            value="Submit"
             >
-              Proceed
-            </button>
-        </div>
+            Submit
+          </button>
+          </form>
+       </div>
       </div>
-    )
-  }
-};
 
-export default withRouter(Register);
+  );
+}
+
+}
+
+export default register;
