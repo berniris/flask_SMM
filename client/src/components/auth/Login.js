@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 // import './login.css';
 
-class Login extends React.Component {
+class Login extends Component {
   state = {
     username: '',
     password: '',
