@@ -9,7 +9,7 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Resources from './components/Resources';
 // import DateIdeas from './components/date_ideas/DateIdeas';
-// import BetterDoctor from './components/find_counselor/BetterDoctor';
+import BetterDoctor from './components/find_counselor/BetterDoctor';
 import AuthService from './services/AuthService';
 // import DateService from './services/DateService';
 
@@ -107,13 +107,12 @@ class App extends Component {
   
     }
 
-
     render() {
 
             return ( <main>
                     <div>
                     <Route exact path = "/" render = { props =>
-                        <div >
+                        <div>
                         <Nav
                         user = { this.state.user }
                         loggedIn = { this.isLoggedIn }
@@ -145,25 +144,19 @@ class App extends Component {
                         )
                     }
                     />  */}
-                    <Route path = "/login"
+                 <Route path = "/login"
                     render = {
                         ({ history }) => ( <Login handleLogin = { this.handleLogin } /> )
                         }/>
-                            <Route path = "/register"
-                            render = {
-                                ({ history }) => ( <Register handleRegister = { this.handleRegister } /> ) } />
-                                  {/* <Route exact path = "/counseling"
-                                    render = {() => ( <BetterDoctor/> ) }/>  */}
-                                    <Route exact path = "/tips"
-                                    render = {
-                                        () => ( < Resources / > )
-                                    }
-                                    /> 
+                            <Route path = "/register" render = {
+                                ({ history }) => ( 
+                                <Register handleRegister = { this.handleRegister } /> ) } />
+                                  <Route exact path = "/counseling" render = { () => ( <BetterDoctor/> ) }/> 
+                                    <Route exact path = "/tips" render = { () => ( < Resources/> )} /> 
                                     </div > 
                                     </main>
                                 );
                           }
-
-                        }
-
-                        export default App;
+            
+                    }
+export default App;

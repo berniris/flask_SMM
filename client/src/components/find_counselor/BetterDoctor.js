@@ -1,6 +1,6 @@
 import React, { Component }  from 'react';
-import Doctor from './Doctor';
-import Geocode from 'react-geocode';
+import DoctorResults from './DoctorResults';
+import Geocode from "react-geocode";
 import '../../App.css';
 
 
@@ -31,16 +31,13 @@ handleChange(e) {
   })
 }
 
-// setKey () {
-// Geocode.setApiKey('AIzaSyCahbTylmYY7urc_nF7MhdBE2Q9CboNNsg');
-// }
-
 enableLogs() {
 Geocode.enableDebug();
 }
 
 getAddress() {
-Geocode.fromAddress('this.state.body')
+    console.log('hi')
+Geocode.fromAddress('new york')
 .then(response => {
     const { lat, lng } = response.results[0].geometry.location;
     console.log(lat, lng)
@@ -78,11 +75,11 @@ componentDidMount() {
 
 
 render() {
-  // console.log(this.state.lat + "," + this.state.lng)
-  // console.log(this.state.body)
+  console.log(this.state.lat + "," + this.state.lng)
+  console.log(this.state.body)
   const doctors = this.state.doctors.map(doctor => {
     return (
-      <Doctor 
+      <DoctorResults
        key={doctor.id}
        firstName={doctor.profile.first_name}
        lastName={doctor.profile.last_name}

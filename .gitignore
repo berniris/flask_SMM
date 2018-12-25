@@ -1,9 +1,13 @@
 # dependencies
-node_modules/
+/node_modules
 
 smmv/
 
 .npm
+.env
+.DS_Store
+.env.development
+.env.local
 
 # Logs
 logs
