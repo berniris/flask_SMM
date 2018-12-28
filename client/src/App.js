@@ -21,7 +21,8 @@ class App extends Component {
             user: null,
             dateideas: [],
             dateID: null,
-            loggedInError: false
+            loggedInError: false,
+            authMessage: null
         }
         // this.createDateIdea = this.createDateIdea.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
@@ -80,7 +81,6 @@ class App extends Component {
     handleRegister(input) {
         AuthService.register(input)
         this.props.history.push('/');
-        window.location.reload()
     }
 
     handleLogout() {
