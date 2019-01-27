@@ -25,6 +25,7 @@ function checkToken() {
 
 
 function login(input) {
+    let loginMessage = "";
     const url = `${BASE_URL}/login`;
     const body = {"username": input.username, "password": input.password}
     const options = { 
@@ -33,12 +34,11 @@ function login(input) {
             mode: 'cors',
             body:JSON.stringify(body),
             }
-    fetch(url, options)
+    return fetch(url, options)
     .then(handleError)
     .then(res => {
      localStorage.setItem("jwt", res.access_token)
-     console.log(res.access_token)
-     return res.message
+     loginMessage = res.message;
      })
     .catch(err => console.log(err))
 }
@@ -57,7 +57,6 @@ function register(input) {
   .then(res => {
     localStorage.setItem("jwt", res.access_token)
     console.log(res.access_token)
-    console.log(res.message)
     })
    .catch(err => console.log(err))
 }

@@ -16,8 +16,8 @@ function Home(props) {
     <h1>"A marriage is like a house. When a lightbulb burns out you do not go and buy a new house, you fix the lightbulb."
     </h1>
     </div>
-    <div className="infobox-2 infobox-couple" style={{backgroundImage: `url(https://images.unsplash.com/photo-1501458005847-438756ac79dd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c4d9e8fe35750d8816a6fd8779290d6b&auto=format&fit=crop&w=632&q=80)`}}>
-    </div>
+    {/* <div className="infobox-2 infobox-couple" style={{backgroundImage: `url(https://images.unsplash.com/photo-1501458005847-438756ac79dd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c4d9e8fe35750d8816a6fd8779290d6b&auto=format&fit=crop&w=632&q=80)`}}> */}
+    {/* </div> */}
     </div>
     </div>
 
@@ -35,10 +35,10 @@ function Home(props) {
     <h1>It's never too late to get your marriage back on track. <span><Link to="/counseling">Speak with a dedicated counselor</Link></span> or browse <span><Link to="/tips">free resources</Link></span> to get started today.
     </h1>
     </div>
-    <div className="infobox-2">
-    <h1>Nothing says "I'm sorry" like flowers or a box of chocalates. Look out for the debut of our new online gift shop soon.</h1></div>
+    <div className="infobox-2 infobox-couple infobox-couple2" style={{backgroundImage: `url(https://images.unsplash.com/photo-1536917855667-b485012a8685?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1967&q=80)`}}>
     </div>
     </div>
+</div>
 </div>
 
     );

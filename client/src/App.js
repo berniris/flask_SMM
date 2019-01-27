@@ -58,25 +58,17 @@ class App extends Component {
     //     DateService.Delete(id)
     // }
 
-    getCalls() {
-        // this.intervalId = setInterval(() => this.getDateIdeas(), 1000);
-        // this.getDateIdeas();
-
-       console.log('say cheese')
-    }
 
     handleLogin(input) {
         AuthService.login(input)
-        console.log(input)
-            // .then(input => {
-            //     this.setState({
-            //         input,
-            //         loggedInError: false
-            //     })
-            // })
-        this.getCalls();
+        .then(user => {
+         this.setState({
+            user,
+            loggedInError: false,
+        });
+    })
+    this.props.history.push('/')
     }
-
 
     handleRegister(input) {
         AuthService.register(input)
@@ -98,17 +90,14 @@ class App extends Component {
             .catch(err => this.setState({ loggedInError: true }))
     }
 
+
     componentDidMount() {
-        // this.getCalls();
         this.isLoggedIn();
     }
 
-    componentWillUnmount() {
-  
-    }
-
     render() {
-
+        console.log(this.state.user)
+        console.log(this.state.authMessage)
             return ( <main>
                     <div>
                     <Route exact path = "/" render = { props =>
@@ -146,7 +135,7 @@ class App extends Component {
                     />  */}
                  <Route path = "/login"
                     render = {
-                        ({ history }) => ( <Login handleLogin = { this.handleLogin } /> )
+                        ({ history }) => ( <Login authMessage= {this.state.authMessage} handleLogin = { this.handleLogin } /> )
                         }/>
                             <Route path = "/register" render = {
                                 ({ history }) => ( 

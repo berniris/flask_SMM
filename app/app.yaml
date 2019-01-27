@@ -1,0 +1,28 @@
+# This file specifies your Python application's runtime configuration
+# including URL routing, versions, static file uploads, etc. See
+# https://developers.google.com/appengine/docs/python/config/appconfig
+# for details.
+
+# version: 1
+runtime: python27
+env: standard
+api_version: 1
+threadsafe: true
+
+builtins:
+- deferred: on
+- appstats: on
+- remote_api: on
+
+# Handlers define how to route requests to your application.
+handlers:
+# App Engine serves and caches static files contained in the listed directories
+# (and subdirectories). Uncomment and set the directory as needed.
+- url: /.*
+  script: run.app
+
+libraries:
+  - name: ssl
+    version: latest
+
+ #virtual environment's folder

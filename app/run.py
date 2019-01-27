@@ -4,8 +4,11 @@ from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
 from flask_jwt_extended import (create_access_token, create_refresh_token, jwt_required, jwt_refresh_token_required, get_jwt_identity, get_raw_jwt)
+
 load_dotenv()
+
 from flask_cors import CORS
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 api = Api(app)
@@ -16,6 +19,7 @@ app.config['SECRET_KEY'] = 'some-secret-string'
 app.config['JWT_SECRET_KEY'] = 'jwt-secret-string'
 
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 jwt = JWTManager(app)
 CORS(app)
 
