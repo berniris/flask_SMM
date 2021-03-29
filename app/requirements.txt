@@ -56,7 +56,7 @@ psycopg2==2.7.6.1
 py2app==0.7.3
 pyCLI==2.0.3
 pycparser==2.17
-Pygments==2.3.0
+Pygments==2.7.4
 PyJWT==1.6.4
 pylint==1.9.3
 pyobjc-core==2.5.1
