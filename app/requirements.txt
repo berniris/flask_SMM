@@ -51,7 +51,7 @@ MySQL-python==1.2.5
 #numpy==1.8.0
 passlib==1.7.1
 pbr==5.1.0
-protobuf==3.6.1
+protobuf==3.15.0
 psycopg2==2.7.6.1
 py2app==0.7.3
 pyCLI==2.0.3
